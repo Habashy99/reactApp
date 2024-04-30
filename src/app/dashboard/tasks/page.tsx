@@ -1,11 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
-import TaskRouter from "../../lib/taskRouter"
+import { useState, useEffect, Fragment } from "react";
+import TaskRouter, { Task } from "../../../lib/taskRouter"
 
-interface Task {
-  taskName: string;
-  taskTime: string;
-};
+
 
 export default function Page() {
   const [data, setData] = useState<Task[]>([]);
@@ -18,12 +15,12 @@ export default function Page() {
   }, [])
 
   return (
-    <div>
+    <Fragment>
       <ul>
         {data.map((task: Task, index: number) => {
           return <li key={index}>{task.taskName} - {task.taskTime}</li>
         })}
       </ul>
-    </div>
+    </Fragment>
   )
 }
